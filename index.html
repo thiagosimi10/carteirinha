@@ -13,8 +13,7 @@
     }
 
     body {
-      /* fundo verde da página toda */
-      background: #5bbf9e;
+      background: #5bbf9e;           /* fundo verde */
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -24,18 +23,28 @@
 
     .card-container {
       width: 100%;
-      max-width: 1100px;     /* limite no desktop */
+      max-width: 1100px;
       padding: 16px;
       display: flex;
       justify-content: center;
     }
 
     .card-container img {
-      width: 100%;           /* ocupa toda a largura disponível */
-      height: auto;          /* mantém proporção retangular */
+      width: 100%;
+      height: auto;
       display: block;
       border-radius: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .info {
+      position: fixed;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #ffffffcc;
+      font-size: 12px;
     }
 
     @media (max-width: 600px) {
@@ -52,8 +61,35 @@
 </head>
 <body>
   <div class="card-container">
-    <!-- Troque o caminho abaixo para o arquivo da sua carteirinha -->
-    <img src="oficialthiago.png" alt="Carteirinha de Estudante">
+    <!-- imagem será definida via JavaScript -->
+    <img id="card-image" src="" alt="Carteirinha de Estudante">
   </div>
+
+  <div class="info">
+    Use ?pessoa=thiago ou ?pessoa=jessica na URL.
+  </div>
+
+  <script>
+    // Mapeia o parâmetro "pessoa" para a imagem correspondente
+    const imagens = {
+      thiago: "oficialthiago.png",
+      jessica: "oficialjessica.png"
+    };
+
+    // Lê o parâmetro "pessoa" da URL
+    const params = new URLSearchParams(window.location.search);
+    const pessoa = (params.get("pessoa") || "").toLowerCase();
+
+    // Escolhe a imagem: se não houver ou for inválido, usa uma padrão
+    let src = imagens[pessoa];
+    if (!src) {
+      // imagem padrão (pode ser a do Thiago ou outra)
+      src = "img/carteirinha-thiago.jpg";
+    }
+
+    // Aplica no elemento <img>
+    const img = document.getElementById("card-image");
+    img.src = src;
+  </script>
 </body>
 </html>
