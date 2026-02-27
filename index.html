@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carteirinha de Estudante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      /* fundo verde da página toda */
+      background: #5bbf9e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .card-container {
+      width: 100%;
+      max-width: 1100px;     /* limite no desktop */
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card-container img {
+      width: 100%;           /* ocupa toda a largura disponível */
+      height: auto;          /* mantém proporção retangular */
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    @media (max-width: 600px) {
+      .card-container {
+        padding: 12px;
+      }
+
+      .card-container img {
+        border-radius: 14px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <!-- Troque o caminho abaixo para o arquivo da sua carteirinha -->
+    <img src="oficialthiago.png" alt="Carteirinha de Estudante">
+  </div>
+</body>
+</html>
